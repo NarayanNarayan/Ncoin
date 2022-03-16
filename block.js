@@ -32,4 +32,13 @@ class BlockChain{
         block.mineBlock(this.hardness);
         this.chain.push(block);
     }
+    checkChain(){
+        for(let i=1;i<this.chain.length;i++){
+            if(this.chain[i].calculateHash()!==this.chain[i].hash ||
+            this.chain[i-1].hash!==this.chain[i].previous_hash ||
+            this.chain[i].hash.substring(0,this.hardness)!=="0".repeat(hardness))
+            return false;
+        }
+        return true;
+    }
 }
