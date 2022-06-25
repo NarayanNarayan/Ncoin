@@ -31,6 +31,7 @@ class BlockChain{
         let block=new Block(getLatestHash(),data);
         block.mineBlock(this.hardness);
         this.chain.push(block);
+        return this;
     }
     checkChain(){
         for(let i=1;i<this.chain.length;i++){
