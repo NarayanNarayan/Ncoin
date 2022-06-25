@@ -6,7 +6,7 @@ class Block{
     constructor(previous_hash,data){
         this.previous_hash=previous_hash;
         this.data=data;
-        this.nonce=0;
+        this.nonce=Math.floor((Math.random() * 1000000) + 1);
         this.hash=this.calculateHash();
     }
     calculateHash(){
