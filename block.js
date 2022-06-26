@@ -1,7 +1,8 @@
 const crypto=require("crypto-js")
-
 const hashf=crypto.SHA256
 
+const EC= require('elliptic').ec;
+const ec = new EC('secp256k1')
 class Block{
     constructor(previous_hash,data){
         this.previous_hash=previous_hash;
@@ -23,6 +24,7 @@ class Block{
 
 
 class BlockChain{
+    #hardness;
     constructor(hardness){
         this.chain=[];
         this.chain.push((new Block("",null)).mineBlock(hardness));
@@ -44,3 +46,5 @@ class BlockChain{
         return true;
     }
 }
+
+
