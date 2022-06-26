@@ -17,6 +17,7 @@ class Block{
             this.nonce++;
             this.hash=this.calculateHash();
         }
+        return this;
     }
 }
 
@@ -24,7 +25,7 @@ class Block{
 class BlockChain{
     constructor(hardness){
         this.chain=[];
-        this.chain.push(new Block("",null));
+        this.chain.push((new Block("",null)).mineBlock(hardness));
         this.#hardness=hardness;
     }
     addBlock(data){
